@@ -23,9 +23,9 @@ class IceAndFire
             'name' => $name
         ];
 
-//        $data = $this->doRequest(static::ENDPOINT_BOOKS, $queryParams);
+        $data = $this->doRequest(static::ENDPOINT_BOOKS, $queryParams);
 
-        $data = '[{"url":"https://www.anapioficeandfire.com/api/books/1","name":"A Game offf Thrones","isbn":"978-0553103540","authors":["George R. R. Martin", "Foo"],"numberOfPages":694,"publisher":"Bantam Books","country":"United States","mediaType":"Hardcover","released":"1996-08-01T00:00:00"},{"url":"https://www.anapioficeandfire.com/api/books/1","name":"A Game of Thrones","isbn":"978-0553103540","authors":["George R. R. Martin"],"numberOfPages":694,"publisher":"Bantam Books","country":"United States","mediaType":"Hardcover","released":"1996-08-01T00:00:00"}]';
+//        $data = '[{"url":"https://www.anapioficeandfire.com/api/books/1","name":"A Game offf Thrones","isbn":"978-0553103540","authors":["George R. R. Martin", "Foo"],"numberOfPages":694,"publisher":"Bantam Books","country":"United States","mediaType":"Hardcover","released":"1996-08-01T00:00:00"},{"url":"https://www.anapioficeandfire.com/api/books/1","name":"A Game of Thrones","isbn":"978-0553103540","authors":["George R. R. Martin"],"numberOfPages":694,"publisher":"Bantam Books","country":"United States","mediaType":"Hardcover","released":"1996-08-01T00:00:00"}]';
         return new ExternalBooksCollection(collect(json_decode($data)));
     }
 
