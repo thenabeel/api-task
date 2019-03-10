@@ -38,7 +38,7 @@ class Update extends FormRequest
     protected function validationData()
     {
         return array_merge($this->request->all(), [
-            'id' => $this->route('id')
+            'id' => $this->route('id'),
         ]);
     }
 }

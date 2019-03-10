@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,7 @@ use Illuminate\Http\Request;
 Route::group(
     [
         'namespace' => 'Api',
-        'middleware' => 'apienforcejson'
+        'middleware' => 'apienforcejson',
     ],
     function () {
         Route::get('/external-books', 'ExternalBooksController');
@@ -27,7 +26,7 @@ Route::group(
     [
         'namespace' => 'Api\\v1',
         'prefix' => 'v1',
-        'middleware' => 'apienforcejson'
+        'middleware' => 'apienforcejson',
     ],
     function () {
         Route::post('/books', 'BooksController@store');

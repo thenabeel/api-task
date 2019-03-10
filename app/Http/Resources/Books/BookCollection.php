@@ -34,7 +34,7 @@ class BookCollection extends ResourceCollection
                     'number_of_pages' => (int) $book->number_of_pages,
                     'publisher' => $book->publisher,
                     'country' => $book->country,
-                    'release_date' => $book->release_date
+                    'release_date' => $book->release_date,
                 ];
             }),
         ];

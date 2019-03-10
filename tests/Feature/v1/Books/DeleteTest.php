@@ -25,9 +25,9 @@ class DeleteTest extends TestCase
         $response->assertJson([
             'errors' => [
                 'id' => [
-                    'The selected id is invalid.'
-                ]
-            ]
+                    'The selected id is invalid.',
+                ],
+            ],
         ]);
     }
 
@@ -66,9 +66,9 @@ class DeleteTest extends TestCase
                     'number_of_pages' => 500,
                     'publisher' => 'Test Publisher',
                     'country' => 'Test Country',
-                    'release_date' => '2002-12-02'
+                    'release_date' => '2002-12-02',
                 ],
-            ]
+            ],
         ];
     }
 }

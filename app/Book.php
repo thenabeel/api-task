@@ -19,6 +19,6 @@ class Book extends Model
      */
     public function scopeReleaseYear($query, $year)
     {
-        return $query->whereRaw('YEAR(release_date) = ' . $year);
+        return $query->whereRaw('YEAR(release_date) = '.$year);
     }
 }

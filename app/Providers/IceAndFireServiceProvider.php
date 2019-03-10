@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use GuzzleHttp\Client;
+use App\Services\IceAndFire\IceAndFire;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
-use App\Services\IceAndFire\IceAndFire;
 
 class IceAndFireServiceProvider extends ServiceProvider implements DeferrableProvider
 {

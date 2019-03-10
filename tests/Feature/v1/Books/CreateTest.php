@@ -25,9 +25,9 @@ class CreateTest extends TestCase
         $response->assertJson([
             'errors' => [
                 'name' => [
-                    'The name field is required.'
-                ]
-            ]
+                    'The name field is required.',
+                ],
+            ],
         ]);
     }
 
@@ -62,23 +62,23 @@ class CreateTest extends TestCase
                     'number_of_pages' => 500,
                     'publisher' => 'Test Publisher',
                     'country' => 'Test Country',
-                    'release_date' => '2002-12-02'
+                    'release_date' => '2002-12-02',
                 ],
                 [
                     'data' => [
                         'name' => 'Test Book',
                         'isbn' => 'test-isbn',
-                        "authors" => [
-                            "John Doe",
-                            "Jane Doe"
+                        'authors' => [
+                            'John Doe',
+                            'Jane Doe',
                         ],
                         'number_of_pages' => 500,
                         'publisher' => 'Test Publisher',
                         'country' => 'Test Country',
                         // 'release_date' => '2002-12-02'
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

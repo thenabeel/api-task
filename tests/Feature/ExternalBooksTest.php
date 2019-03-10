@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
+use Tests\TestCase;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
-use Tests\TestCase;
-use App\Services\IceAndFire\IceAndFire;
-use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Handler\MockHandler;
+use App\Services\IceAndFire\IceAndFire;
 
 class ExternalBooksTest extends TestCase
 {
@@ -24,7 +24,7 @@ class ExternalBooksTest extends TestCase
         ]);
 
         $client = new Client([
-            'handler' => HandlerStack::create($apiMock)
+            'handler' => HandlerStack::create($apiMock),
         ]);
 
         $this->instance(IceAndFire::class, new IceAndFire($client));
@@ -46,9 +46,9 @@ class ExternalBooksTest extends TestCase
         $response->assertJson([
             'errors' => [
                 'name' => [
-                    'The name field is required.'
-                ]
-            ]
+                    'The name field is required.',
+                ],
+            ],
         ]);
     }
 
@@ -65,7 +65,7 @@ class ExternalBooksTest extends TestCase
             'GET',
             '/api/external-books',
             [
-                'name' => 'A Game of Thrones'
+                'name' => 'A Game of Thrones',
             ]
         );
 
@@ -84,28 +84,28 @@ class ExternalBooksTest extends TestCase
                             'isbn' => '978-0553103540',
                             'authors' => [
                                 'George R. R. Martin',
-                                'Foo'
+                                'Foo',
                             ],
                             'number_of_pages' => 694,
                             'publisher' => 'Bantam Books',
                             'country' => 'United States',
-                            'release_date' => '1996-08-01'
+                            'release_date' => '1996-08-01',
                         ],
                         [
                             'name' => 'Foo Test Title',
                             'isbn' => '978-0553103540',
                             'authors' => [
                                 'George R. R. Martin',
-                                'Foo'
+                                'Foo',
                             ],
                             'number_of_pages' => 695,
                             'publisher' => 'Bantam Books',
                             'country' => 'United States',
-                            'release_date' => '1996-08-01'
-                        ]
-                    ]
-                ]
-            ]
+                            'release_date' => '1996-08-01',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

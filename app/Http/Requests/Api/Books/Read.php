@@ -24,7 +24,7 @@ class Read extends FormRequest
     public function rules()
     {
         return [
-            'filter.release_year' => 'sometimes|integer'
+            'filter.release_year' => 'sometimes|integer',
         ];
     }
 }

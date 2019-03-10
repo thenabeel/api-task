@@ -24,8 +24,8 @@ class Book extends JsonResource
                 'number_of_pages' => (int) $this->number_of_pages,
                 'publisher' => $this->publisher,
                 'country' => $this->country,
-                'release_data' => $this->release_date
-            ]
+                'release_data' => $this->release_date,
+            ],
         ];
     }
 }

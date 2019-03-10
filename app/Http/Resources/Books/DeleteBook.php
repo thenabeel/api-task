@@ -31,8 +31,8 @@ class DeleteBook extends JsonResource
         return [
             'status_code' => 204,
             'status' => 'success',
-            'message' => 'The book ' . $this->oldBookName . ' was deleted successfully',
-            'data' => []
+            'message' => 'The book '.$this->oldBookName.' was deleted successfully',
+            'data' => [],
         ];
     }
 

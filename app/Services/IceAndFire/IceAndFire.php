@@ -2,8 +2,8 @@
 
 namespace App\Services\IceAndFire;
 
-use App\Http\Resources\ExternalBooksCollection;
 use GuzzleHttp\Client;
+use App\Http\Resources\ExternalBooksCollection;
 
 class IceAndFire
 {
@@ -20,7 +20,7 @@ class IceAndFire
     public function getBooks($name)
     {
         $queryParams = [
-            'name' => $name
+            'name' => $name,
         ];
 
         $data = $this->doRequest(static::ENDPOINT_BOOKS, $queryParams);
@@ -34,7 +34,7 @@ class IceAndFire
         $data = $this->client->get(
             $endpoint,
             [
-                'query' => $queryParams
+                'query' => $queryParams,
             ]
         );
 
