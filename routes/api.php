@@ -13,15 +13,26 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(
     [
-        'namespace' => 'Api'
+        'namespace' => 'Api',
+        'middleware' => 'apienforcejson'
     ],
     function () {
         Route::get('/external-books', 'ExternalBooksController');
+    }
+);
+
+Route::group(
+    [
+        'namespace' => 'Api\\v1',
+        'prefix' => 'v1',
+        'middleware' => 'apienforcejson'
+    ],
+    function () {
+        Route::post('/books', 'BooksController@store');
+        Route::get('/books', 'BooksController@index');
+        Route::patch('/books/{id}', 'BooksController@update');
+        Route::delete('/books/{id}', 'BooksController@destroy');
     }
 );

@@ -89,7 +89,7 @@ class ExternalBooksTest extends TestCase
                             'number_of_pages' => 694,
                             'publisher' => 'Bantam Books',
                             'country' => 'United States',
-                            'release_date' => '1996-08-01T00:00:00'
+                            'release_date' => '1996-08-01'
                         ],
                         [
                             'name' => 'Foo Test Title',
@@ -101,7 +101,7 @@ class ExternalBooksTest extends TestCase
                             'number_of_pages' => 695,
                             'publisher' => 'Bantam Books',
                             'country' => 'United States',
-                            'release_date' => '1996-08-01T00:00:00'
+                            'release_date' => '1996-08-01'
                         ]
                     ]
                 ]

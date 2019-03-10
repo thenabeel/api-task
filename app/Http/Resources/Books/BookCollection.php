@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Books;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Carbon\Carbon;
 
-class ExternalBooksCollection extends ResourceCollection
+class BookCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -28,13 +27,14 @@ class ExternalBooksCollection extends ResourceCollection
             'status' => 'success',
             'data' => $this->collection->transform(function ($book) {
                 return [
+                    'id' => $book->id,
                     'name' => $book->name,
                     'isbn' => $book->isbn,
-                    'authors' => $book->authors,
-                    'number_of_pages' => (int) $book->numberOfPages,
+                    'authors' => explode(',', $book->authors),
+                    'number_of_pages' => (int) $book->number_of_pages,
                     'publisher' => $book->publisher,
                     'country' => $book->country,
-                    'release_date' => Carbon::parse($book->released)->format('Y-m-d')
+                    'release_date' => $book->release_date
                 ];
             }),
         ];
