@@ -3,19 +3,19 @@
 namespace App\Repositories;
 
 use App\Book;
-use App\Http\Requests\Api\Books\Create;
-use App\Http\Requests\Api\Books\Delete;
+use Spatie\QueryBuilder\Filter;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\Api\Books\Read;
 use App\Http\Requests\Api\Books\Show;
-use App\Http\Requests\Api\Books\Update;
-use App\Http\Resources\Books\Book as BookResource;
-use App\Http\Resources\Books\BookCollection;
-use App\Http\Resources\Books\DeleteBook;
-use App\Http\Resources\Books\Show as ShowResource;
-use App\Http\Resources\Books\UpdateBook;
-use Illuminate\Support\Facades\Log;
 use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\Filter;
+use App\Http\Requests\Api\Books\Create;
+use App\Http\Requests\Api\Books\Delete;
+use App\Http\Requests\Api\Books\Update;
+use App\Http\Resources\Books\DeleteBook;
+use App\Http\Resources\Books\UpdateBook;
+use App\Http\Resources\Books\BookCollection;
+use App\Http\Resources\Books\Book as BookResource;
+use App\Http\Resources\Books\Show as ShowResource;
 
 class BookRepository
 {
@@ -75,11 +75,11 @@ class BookRepository
             $book->delete();
         } catch (\Exception $e) {
             Log::error('Error deleting record', [
-                'id' => $id
+                'id' => $id,
             ]);
         }
 
-        return (new DeleteBook($book, $oldBookName));
+        return new DeleteBook($book, $oldBookName);
     }
 
     public function show(Show $request, $id)

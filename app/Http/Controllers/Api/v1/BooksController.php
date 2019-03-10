@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Requests\Api\Books\Create;
-use App\Http\Requests\Api\Books\Delete;
+use App\Http\Controllers\Controller;
+use App\Repositories\BookRepository;
 use App\Http\Requests\Api\Books\Read;
 use App\Http\Requests\Api\Books\Show;
+use App\Http\Requests\Api\Books\Create;
+use App\Http\Requests\Api\Books\Delete;
 use App\Http\Requests\Api\Books\Update;
-use App\Repositories\BookRepository;
-use App\Http\Controllers\Controller;
 
 class BooksController extends Controller
 {

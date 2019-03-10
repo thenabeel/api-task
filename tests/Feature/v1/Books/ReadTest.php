@@ -23,7 +23,7 @@ class ReadTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJson([
-            'data' => []
+            'data' => [],
         ]);
     }
 
@@ -64,7 +64,7 @@ class ReadTest extends TestCase
                     'number_of_pages' => 500,
                     'publisher' => 'Test Publisher',
                     'country' => 'Test Country',
-                    'release_date' => '2002-12-02'
+                    'release_date' => '2002-12-02',
                 ],
                 [
                     'status_code' => 200,
@@ -74,15 +74,15 @@ class ReadTest extends TestCase
                             'id' => 1,
                             'name' => 'Test Book',
                             'isbn' => 'test-isbn',
-                            "authors" => [
-                                "John Doe",
-                                "Jane Doe"
+                            'authors' => [
+                                'John Doe',
+                                'Jane Doe',
                             ],
                             'number_of_pages' => 500,
                             'publisher' => 'Test Publisher',
                             'country' => 'Test Country',
                             // 'release_date' => '2002-12-02'
-                        ]
+                        ],
                     ],
                 ],
             ],

@@ -31,7 +31,7 @@ class UpdateBook extends JsonResource
         return [
             'status_code' => 200,
             'status' => 'success',
-            'message' => 'The book ' . $this->oldBookName . ' was updated successfully',
+            'message' => 'The book '.$this->oldBookName.' was updated successfully',
             'data' => [
                 'name' => $this->name,
                 'isbn' => $this->isbn,
@@ -39,8 +39,8 @@ class UpdateBook extends JsonResource
                 'number_of_pages' => (int) $this->number_of_pages,
                 'publisher' => $this->publisher,
                 'country' => $this->country,
-                'release_data' => $this->release_date
-            ]
+                'release_data' => $this->release_date,
+            ],
         ];
     }
 }

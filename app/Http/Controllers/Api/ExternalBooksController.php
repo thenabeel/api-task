@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\ExternalBooksFormRequest;
 use App\Services\IceAndFire\IceAndFire;
+use App\Http\Requests\Api\ExternalBooksFormRequest;
 
 class ExternalBooksController extends Controller
 {

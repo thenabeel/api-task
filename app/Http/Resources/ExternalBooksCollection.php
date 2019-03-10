@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
 use Carbon\Carbon;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ExternalBooksCollection extends ResourceCollection
 {
@@ -34,7 +34,7 @@ class ExternalBooksCollection extends ResourceCollection
                     'number_of_pages' => (int) $book->numberOfPages,
                     'publisher' => $book->publisher,
                     'country' => $book->country,
-                    'release_date' => Carbon::parse($book->released)->format('Y-m-d')
+                    'release_date' => Carbon::parse($book->released)->format('Y-m-d'),
                 ];
             }),
         ];

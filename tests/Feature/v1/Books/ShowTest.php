@@ -25,9 +25,9 @@ class ShowTest extends TestCase
         $response->assertJson([
             'errors' => [
                 'id' => [
-                    'The selected id is invalid.'
-                ]
-            ]
+                    'The selected id is invalid.',
+                ],
+            ],
         ]);
     }
 
@@ -68,22 +68,22 @@ class ShowTest extends TestCase
                     'number_of_pages' => 500,
                     'publisher' => 'Test Publisher',
                     'country' => 'Test Country',
-                    'release_date' => '2002-12-02'
+                    'release_date' => '2002-12-02',
                 ],
                 [
                     'data' => [
                         'name' => 'Test Name',
                         'isbn' => 'test-isbn',
-                        "authors" => [
-                            "John Doe",
-                            "Jane Doe"
+                        'authors' => [
+                            'John Doe',
+                            'Jane Doe',
                         ],
                         'number_of_pages' => 500,
                         'publisher' => 'Test Publisher',
                         'country' => 'Test Country',
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }
