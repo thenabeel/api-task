@@ -6,10 +6,12 @@ use App\Book;
 use App\Http\Requests\Api\Books\Create;
 use App\Http\Requests\Api\Books\Delete;
 use App\Http\Requests\Api\Books\Read;
+use App\Http\Requests\Api\Books\Show;
 use App\Http\Requests\Api\Books\Update;
 use App\Http\Resources\Books\Book as BookResource;
 use App\Http\Resources\Books\BookCollection;
 use App\Http\Resources\Books\DeleteBook;
+use App\Http\Resources\Books\Show as ShowResource;
 use App\Http\Resources\Books\UpdateBook;
 use Illuminate\Support\Facades\Log;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -78,5 +80,12 @@ class BookRepository
         }
 
         return (new DeleteBook($book, $oldBookName));
+    }
+
+    public function show(Show $request, $id)
+    {
+        $book = Book::find($id);
+
+        return new ShowResource($book);
     }
 }

@@ -34,5 +34,6 @@ Route::group(
         Route::get('/books', 'BooksController@index');
         Route::patch('/books/{id}', 'BooksController@update');
         Route::delete('/books/{id}', 'BooksController@destroy');
+        Route::get('/books/{id}', 'BooksController@show');
     }
 );
