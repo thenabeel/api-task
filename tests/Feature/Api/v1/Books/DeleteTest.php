@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Api\v1\Books;
 
+use App\Book;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Book;
 
 class DeleteTest extends TestCase
 {
@@ -78,8 +78,8 @@ class DeleteTest extends TestCase
                     'status_code' => 204,
                     'status' => 'success',
                     'message' => 'The book Test Name was deleted successfully',
-                    'data' => []
-                ]
+                    'data' => [],
+                ],
             ],
         ];
     }
