@@ -4,6 +4,7 @@ namespace Tests\Feature\Api\v1\Books;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Book;
 
 class DeleteTest extends TestCase
 {
@@ -34,28 +35,33 @@ class DeleteTest extends TestCase
     /**
      * Tests delete book.
      *
-     * @param $oldData
+     * @param $inputData
+     * @param $expectedResponse
      * @return void
-     * @dataProvider providerCreateBook
+     * @dataProvider providerDeleteBook
      */
-    public function testDeleteBook($oldData)
+    public function testDeleteBook($inputData, $expectedResponse)
     {
         // Create a book
         $this->post(
             '/api/v1/books',
-            $oldData
+            $inputData
         );
 
-        // Update the book
+        $this->assertEquals(Book::whereId(1)->count(), 1);
+
+        // Delete the book
         $response = $this->json(
             'DELETE',
             '/api/v1/books/1'
         );
 
-        $response->assertStatus(204);
+        $this->assertEquals(Book::whereId(1)->count(), 0);
+        $response->assertStatus(200);
+        $response->assertJson($expectedResponse);
     }
 
-    public function providerCreateBook()
+    public function providerDeleteBook()
     {
         return [
             [
@@ -68,6 +74,12 @@ class DeleteTest extends TestCase
                     'country' => 'Test Country',
                     'release_date' => '2002-12-02',
                 ],
+                [
+                    'status_code' => 204,
+                    'status' => 'success',
+                    'message' => 'The book Test Name was deleted successfully',
+                    'data' => []
+                ]
             ],
         ];
     }

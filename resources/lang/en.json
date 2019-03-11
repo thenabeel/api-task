@@ -1,0 +1,5 @@
+{
+  "success": "success",
+  "Book updated successfully" : "The book :name was updated successfully",
+  "Book deleted successfully" : "The book :name was deleted successfully"
+}

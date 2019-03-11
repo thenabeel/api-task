@@ -18,14 +18,14 @@ class ExternalBooksCollection extends ResourceCollection
         if ($this->collection->isEmpty()) {
             return [
                 'status_code' => 200,
-                'status' => 'success',
+                'status' => __('success'),
                 'data' => [],
             ];
         }
 
         return [
             'status_code' => 200,
-            'status' => 'success',
+            'status' => __('success'),
             'data' => $this->collection->transform(function ($book) {
                 return [
                     'name' => $book->name,

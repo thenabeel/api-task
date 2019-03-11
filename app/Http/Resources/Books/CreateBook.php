@@ -16,7 +16,7 @@ class CreateBook extends JsonResource
     {
         return [
             'status_code' => 201,
-            'status' => 'success',
+            'status' => __('success'),
             'data' => [
                 'name' => $this->name,
                 'isbn' => $this->isbn,

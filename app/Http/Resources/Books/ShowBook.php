@@ -16,7 +16,7 @@ class ShowBook extends JsonResource
     {
         return [
             'status_code' => 200,
-            'status' => 'success',
+            'status' => __('success'),
             'data' => [
                 'name' => $this->name,
                 'isbn' => $this->isbn,

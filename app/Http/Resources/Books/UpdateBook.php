@@ -30,8 +30,8 @@ class UpdateBook extends JsonResource
     {
         return [
             'status_code' => 200,
-            'status' => 'success',
-            'message' => 'The book '.$this->oldBookName.' was updated successfully',
+            'status' => __('success'),
+            'message' => __('Book updated successfully', ['name' => $this->oldBookName]),
             'data' => [
                 'name' => $this->name,
                 'isbn' => $this->isbn,
