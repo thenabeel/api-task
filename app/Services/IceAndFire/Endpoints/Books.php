@@ -2,8 +2,8 @@
 
 namespace App\Services\IceAndFire\Endpoints;
 
-use App\Services\IceAndFire\ServiceInterface;
 use GuzzleHttp\Client;
+use App\Services\IceAndFire\ServiceInterface;
 use App\Http\Resources\ExternalBooksCollection;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 

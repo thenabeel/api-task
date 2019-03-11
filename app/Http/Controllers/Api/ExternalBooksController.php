@@ -19,7 +19,7 @@ class ExternalBooksController extends Controller
     public function __invoke(ExternalBooksFormRequest $request, IceAndFireFactory $iceAndFire)
     {
         return $iceAndFire->getData('books', [
-            'name' => $request->validated()['name']
+            'name' => $request->validated()['name'],
         ]);
     }
 }
