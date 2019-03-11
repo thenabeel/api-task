@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api;
 
 use Tests\TestCase;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Handler\MockHandler;
-use App\Services\IceAndFire\IceAndFire;
+use App\Services\IceAndFire\IceAndFireFactory;
 
 class ExternalBooksTest extends TestCase
 {
@@ -27,7 +27,7 @@ class ExternalBooksTest extends TestCase
             'handler' => HandlerStack::create($apiMock),
         ]);
 
-        $this->instance(IceAndFire::class, new IceAndFire($client));
+        $this->instance(IceAndFireFactory::class, new IceAndFireFactory($client));
     }
 
     /**

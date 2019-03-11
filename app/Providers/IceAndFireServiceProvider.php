@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use GuzzleHttp\Client;
-use App\Services\IceAndFire\IceAndFire;
+use App\Services\IceAndFire\IceAndFireFactory;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
 
@@ -16,12 +16,12 @@ class IceAndFireServiceProvider extends ServiceProvider implements DeferrablePro
      */
     public function register()
     {
-        $this->app->singleton(IceAndFire::class, function () {
+        $this->app->singleton(IceAndFireFactory::class, function () {
             $client = new Client([
                 'base_uri' => 'https://www.anapioficeandfire.com/api/',
             ]);
 
-            return new IceAndFire($client);
+            return new IceAndFireFactory($client);
         });
     }
 
@@ -37,6 +37,6 @@ class IceAndFireServiceProvider extends ServiceProvider implements DeferrablePro
 
     public function provides()
     {
-        return [IceAndFire::class];
+        return [IceAndFireFactory::class];
     }
 }

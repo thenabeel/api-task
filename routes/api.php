@@ -14,25 +14,30 @@
 
 Route::group(
     [
-        'namespace' => 'Api',
         'middleware' => 'apienforcejson',
     ],
     function () {
-        Route::get('/external-books', 'ExternalBooksController');
-    }
-);
+        Route::group(
+            [
+                'namespace' => 'Api',
+            ],
+            function () {
+                Route::get('/external-books', 'ExternalBooksController');
+            }
+        );
 
-Route::group(
-    [
-        'namespace' => 'Api\\v1',
-        'prefix' => 'v1',
-        'middleware' => 'apienforcejson',
-    ],
-    function () {
-        Route::post('/books', 'BooksController@store');
-        Route::get('/books', 'BooksController@index');
-        Route::patch('/books/{id}', 'BooksController@update');
-        Route::delete('/books/{id}', 'BooksController@destroy');
-        Route::get('/books/{id}', 'BooksController@show');
+        Route::group(
+            [
+                'namespace' => 'Api\\v1',
+                'prefix' => 'v1',
+            ],
+            function () {
+                Route::get('/books', 'BooksController@index');
+                Route::post('/books', 'BooksController@store');
+                Route::get('/books/{id}', 'BooksController@show');
+                Route::patch('/books/{id}', 'BooksController@update');
+                Route::delete('/books/{id}', 'BooksController@destroy');
+            }
+        );
     }
 );

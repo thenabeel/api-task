@@ -14,25 +14,27 @@ use App\Http\Requests\Api\Books\Update;
 use App\Http\Resources\Books\DeleteBook;
 use App\Http\Resources\Books\UpdateBook;
 use App\Http\Resources\Books\BookCollection;
-use App\Http\Resources\Books\Book as BookResource;
-use App\Http\Resources\Books\Show as ShowResource;
+use App\Http\Resources\Books\CreateBook;
+use App\Http\Resources\Books\ShowBook;
 
 class BookRepository
 {
     /**
      * @param Create $request
-     * @return BookResource
+     * @return CreateBook
      */
-    public function create(Create $request)
+    public function create(Create $request): CreateBook
     {
-        $data = $request->validated();
+        $book = Book::create($request->validated());
 
-        $book = Book::create($data);
-
-        return new BookResource($book);
+        return new CreateBook($book);
     }
 
-    public function read(Read $request)
+    /**
+     * @param Read $request
+     * @return BookCollection
+     */
+    public function read(Read $request): BookCollection
     {
         $books = QueryBuilder::for(Book::class)
             ->allowedFilters([
@@ -51,7 +53,7 @@ class BookRepository
      * @param $id
      * @return UpdateBook
      */
-    public function update(Update $request, $id)
+    public function update(Update $request, $id): UpdateBook
     {
         $data = $request->validated();
         unset($data['id']);
@@ -65,7 +67,12 @@ class BookRepository
         return new UpdateBook($book, $oldBookName);
     }
 
-    public function delete(Delete $delete, $id)
+    /**
+     * @param Delete $delete
+     * @param $id
+     * @return DeleteBook
+     */
+    public function delete(Delete $delete, $id): DeleteBook
     {
         try {
             /** @var Book $book */
@@ -82,10 +89,15 @@ class BookRepository
         return new DeleteBook($book, $oldBookName);
     }
 
-    public function show(Show $request, $id)
+    /**
+     * @param Show $request
+     * @param $id
+     * @return ShowBook
+     */
+    public function show(Show $request, $id): ShowBook
     {
         $book = Book::find($id);
 
-        return new ShowResource($book);
+        return new ShowBook($book);
     }
 }

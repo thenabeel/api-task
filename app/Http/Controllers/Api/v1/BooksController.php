@@ -9,28 +9,39 @@ use App\Http\Requests\Api\Books\Show;
 use App\Http\Requests\Api\Books\Create;
 use App\Http\Requests\Api\Books\Delete;
 use App\Http\Requests\Api\Books\Update;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class BooksController extends Controller
 {
+    /** @var BookRepository $repository */
+    protected $repository;
+
+    public function __construct(BookRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \App\Http\Resources\Books\BookCollection
+     * @param Read $request
+     * @return ResourceCollection
      */
-    public function index(Read $request)
+    public function index(Read $request): ResourceCollection
     {
-        return (new BookRepository)->read($request);
+        return (new $this->repository)->read($request);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \App\Http\Resources\Books\Book
+     * @param Create $request
+     * @return JsonResource
      */
-    public function store(Create $request)
+    public function store(Create $request): JsonResource
     {
-        return (new BookRepository)->create($request);
+        return (new $this->repository)->create($request);
     }
 
     /**
@@ -38,34 +49,34 @@ class BooksController extends Controller
      *
      * @param Show $request
      * @param int $id
-     * @return \App\Http\Resources\Books\Book
+     * @return JsonResource
      */
-    public function show(Show $request, $id)
+    public function show(Show $request, $id): JsonResource
     {
-        return (new BookRepository)->show($request, $id);
+        return (new $this->repository)->show($request, $id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Update $request
-     * @param  int $id
-     * @return \App\Http\Resources\Books\UpdateBook
+     * @param int $id
+     * @return JsonResource
      */
-    public function update(Update $request, $id)
+    public function update(Update $request, $id): JsonResource
     {
-        return (new BookRepository)->update($request, $id);
+        return (new $this->repository)->update($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Delete $request
-     * @param  int $id
-     * @return \App\Http\Resources\Books\DeleteBook
+     * @param int $id
+     * @return JsonResource
      */
-    public function destroy(Delete $request, $id)
+    public function destroy(Delete $request, $id): JsonResource
     {
-        return (new BookRepository)->delete($request, $id);
+        return (new $this->repository)->delete($request, $id);
     }
 }

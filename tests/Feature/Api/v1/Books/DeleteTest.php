@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature\v1\Books;
+namespace Tests\Feature\Api\v1\Books;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UpdateTest extends TestCase
+class DeleteTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -14,10 +14,10 @@ class UpdateTest extends TestCase
      *
      * @return void
      */
-    public function testUpdateBookWithWrongResourceId()
+    public function testDeleteBookWithWrongResourceId()
     {
         $response = $this->json(
-            'PATCH',
+            'DELETE',
             '/api/v1/books/3'
         );
 
@@ -32,15 +32,13 @@ class UpdateTest extends TestCase
     }
 
     /**
-     * Tests update book.
+     * Tests delete book.
      *
      * @param $oldData
-     * @param $newData
-     * @param $expectedResponse
      * @return void
      * @dataProvider providerCreateBook
      */
-    public function testUpdateBook($oldData, $newData, $expectedResponse)
+    public function testDeleteBook($oldData)
     {
         // Create a book
         $this->post(
@@ -50,13 +48,11 @@ class UpdateTest extends TestCase
 
         // Update the book
         $response = $this->json(
-            'PATCH',
-            '/api/v1/books/1',
-            $newData
+            'DELETE',
+            '/api/v1/books/1'
         );
 
-        $response->assertStatus(200);
-        $response->assertJson($expectedResponse);
+        $response->assertStatus(204);
     }
 
     public function providerCreateBook()
@@ -64,30 +60,13 @@ class UpdateTest extends TestCase
         return [
             [
                 [
-                    'name' => 'Old Name',
+                    'name' => 'Test Name',
                     'isbn' => 'test-isbn',
                     'authors' => 'John Doe,Jane Doe',
                     'number_of_pages' => 500,
                     'publisher' => 'Test Publisher',
                     'country' => 'Test Country',
                     'release_date' => '2002-12-02',
-                ],
-                [
-                    'name' => 'New Name',
-                ],
-                [
-                    'data' => [
-                        'name' => 'New Name',
-                        'isbn' => 'test-isbn',
-                        'authors' => [
-                            'John Doe',
-                            'Jane Doe',
-                        ],
-                        'number_of_pages' => 500,
-                        'publisher' => 'Test Publisher',
-                        'country' => 'Test Country',
-                        // 'release_date' => '2002-12-02'
-                    ],
                 ],
             ],
         ];
