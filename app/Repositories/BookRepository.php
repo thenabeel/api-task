@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Requests\Api\Books\Read;
 use App\Http\Requests\Api\Books\Show;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Http\Resources\Books\ShowBook;
 use App\Http\Requests\Api\Books\Create;
 use App\Http\Requests\Api\Books\Delete;
 use App\Http\Requests\Api\Books\Update;
+use App\Http\Resources\Books\CreateBook;
 use App\Http\Resources\Books\DeleteBook;
 use App\Http\Resources\Books\UpdateBook;
 use App\Http\Resources\Books\BookCollection;
-use App\Http\Resources\Books\CreateBook;
-use App\Http\Resources\Books\ShowBook;
 
 class BookRepository
 {

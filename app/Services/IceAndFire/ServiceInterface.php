@@ -8,5 +8,6 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 interface ServiceInterface
 {
     public function __construct(Client $client, array $params = []);
+
     public function getData(): ResourceCollection;
 }
