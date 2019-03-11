@@ -3,7 +3,13 @@
 [![Build Status](https://travis-ci.org/thenabeel/api-task.svg?branch=master)](https://travis-ci.org/thenabeel/api-task) 
 [![StyleCI](https://github.styleci.io/repos/174709898/shield?branch=master)](https://github.styleci.io/repos/174709898)
 
-## Installation
+
+## Live Server
+For your ease, I have deployed the code on live server so you can access API directly without local installation:
+
+http://172.104.135.245/
+
+## Local Installation
 It requires PHP >= 7.1.3, Composer and MySQL.
 
 Clone the folder and run Composer
@@ -29,6 +35,12 @@ php artisan migrate
 
 **GET /api/external-books?name=:nameOfABook**
 
+*Filters (can be passed as parameter):*
+<br />filter[name]
+<br />filter[country]
+<br />filter[publisher]
+<br />filter[release_year]
+
 **POST /api/v1/books**
 Accepts input as form data.
 
@@ -41,7 +53,7 @@ Accepts input as x-www-form-url-encoded.
 
 
 ## Postman Collection
-To ease API testing, I am attaching Postman Collection so you can easily import and test.
+I am attaching Postman Collection so you can easily import and test. You can use above live server as host.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/76b0973242df861a92d1#?env%5BAdeva%20Local%5D=W3sia2V5IjoiaG9zdCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwIiwiZGVzY3JpcHRpb24iOiIiLCJ0eXBlIjoidGV4dCIsImVuYWJsZWQiOnRydWV9XQ==)
 
