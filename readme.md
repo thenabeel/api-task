@@ -5,30 +5,19 @@
 
 
 ## Live Server
-For your ease, I have deployed the code on live server so you can access API directly without local installation:
+For your ease, code is deployed on live server API can be accessed without local installation:
 
 http://172.104.135.245/
 
-## Local Installation
-It requires PHP >= 7.1.3, Composer and MySQL.
 
-Clone the folder and run Composer
+## Postman Collection
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/76b0973242df861a92d1#?env%5BAdeva%20Local%5D=W3sia2V5IjoiaG9zdCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwIiwiZGVzY3JpcHRpb24iOiIiLCJ0eXBlIjoidGV4dCIsImVuYWJsZWQiOnRydWV9XQ==)
 
-```bash
-composer install
-```
-Create database and then set these variables accordingly in `.env` file:
-```bash
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
-```
-It's time to run migrations now to create required table in database:
-```bash
-php artisan migrate
-```
+Above live server can be used as host.
+
+If above button does not work, you can download collection from here:
+
+[Collection Link](https://www.getpostman.com/collections/76b0973242df861a92d1)
 
 
 ## Usage
@@ -52,14 +41,35 @@ Accepts input as x-www-form-url-encoded.
 **DELETE /api/v1/books/:id**
 
 
-## Postman Collection
-I am attaching Postman Collection so you can easily import and test. You can use above live server as host.
+## Local Installation
+Laravel Framework has been used.
+It requires PHP >= 7.1.3, Composer and MySQL.
+Also, see Laravel Installation docs.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/76b0973242df861a92d1#?env%5BAdeva%20Local%5D=W3sia2V5IjoiaG9zdCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwIiwiZGVzY3JpcHRpb24iOiIiLCJ0eXBlIjoidGV4dCIsImVuYWJsZWQiOnRydWV9XQ==)
+Clone the folder and run Composer
 
-If above button does not work, you can download collection from here:
+```bash
+composer install
+```
+Copy `.env.example` to `.env` if it does not exist.
+Create database and then set these variables accordingly in `.env` file:
+```bash
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
 
-[Collection Link](https://www.getpostman.com/collections/76b0973242df861a92d1)
+Create `APP_KEY` if it does not already exist in `.env` file.
+```bash
+php artisan key:generate
+```
+
+It's time to run migrations now to create required table in database:
+```bash
+php artisan migrate
+```
 
 
 ## Tested Code
